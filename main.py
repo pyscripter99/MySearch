@@ -3,7 +3,6 @@ from flask_socketio import SocketIO
 import sqlite3 as sql
 import re
 
-con = sql.connect("sites.db")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
@@ -15,6 +14,7 @@ def home():
 
 @app.route("/search/")
 def search():
+    con = sql.connect("sites.db")
     query = request.args.get("q")
     tbl = "title"
     if "[SEARCH-URL]" in query:
