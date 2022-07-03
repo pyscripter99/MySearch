@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/static/MySearch - favicon.png">
     <title>MySearch - {{ search_term }}</title>
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
         }
 
-        h1 {
-            text-align: center;
+        img {
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0%);
         }
 
     </style>
 </head>
 <body>
-    <h1 onclick="window.location.href = '/';">MySearch</h1>
+    <img onclick="window.location.href = '/';" src="/static/MySearch.png" style="max-width: 250px;">
 
     {% for title, result in results.items() %}
         <p>{{ result["display_url"] }}</p>

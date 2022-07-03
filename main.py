@@ -16,10 +16,17 @@ def home():
 @app.route("/search/")
 def search():
     query = request.args.get("q")
+    tbl = "title"
+    if "[SEARCH-URL]" in query:
+        query = query.replace("[SEARCH-URL]", "")
+        tbl = "url"
+    elif "[SEARCH-DESCRIPTION]" in query:
+        query = query.replace("[SEARCH-DESCRIPTION]", "")
+        tbl = "description"
     page = request.args.get("page")
     #do indexing
     results = {}
-    cmd = f"select * from sites where title like '%{query}%' limit 20"
+    cmd = f"select * from sites where {tbl} like '%{query}%' limit 20"
     if not page in [None, ""]: cmd += " offset " + str(int(page) * 20)
     num_results_lst = con.execute("select * from sites where title like '%" + query + "%'")
     num_results = 0
