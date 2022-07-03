@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySearch - Securly Browse The Web!</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .search_box {
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        input[type=text] {
+            width: 500px;
+            height: 40px;
+            border-radius: 7px;
+            box-shadow: 0px 0px 5px #bbbbbb;
+            border: none;
+            outline: none;
+            padding: 5px;
+            transition: all 100ms;
+        }
+
+        input[type=text]:hover {
+            box-shadow: 0px 0px 7px #999898;
+            transition: all 100ms;
+        }
+
+        input[type=submit] {
+            padding: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 5px;
+            background-color: rgb(97, 255, 97);
+            border: none;
+            transition: all 100ms;
+        }
+
+        input[type=submit]:hover {
+            background-color: rgb(84, 224, 84);
+            transition: all 100ms;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="search_box">
+        <h1 class="title">MySearch</h2>
+        <form action="/search/" method="get">
+            <input type="text" name="q" id="q" placeholder="Search for anything!" autocomplete="off">
+            <br>
+            <br>
+            <input type="submit" value="Search" style="position: fixed; left: 50%; transform: translate(-50%);">
+        </form>
+    </div>
+</body>
+</html>

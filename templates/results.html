@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySearch - {{ search_term }}</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 onclick="window.location.href = '/';">MySearch</h1>
+
+    {% for title, result in results.items() %}
+        <p>{{ result["display_url"] }}</p>
+        <a href="{{ result["url"] }}">{{ title }}</a>
+        <p style="max-width: 400px;">{{ result["description"] }}</p>
+        <br>
+        <br>
+    {% endfor %}
+    {% for x in range(num_results // 20) %}
+    <a href="/search/?q={{request.args.get('q')}}&page={{ x + 1 }}">{{x+1}}</a>
+    {% endfor %}
+    {% if not found %}
+    <p>Sorry, we couldn't find any results</p>
+    {% endif %}
+</body>
+</html>
